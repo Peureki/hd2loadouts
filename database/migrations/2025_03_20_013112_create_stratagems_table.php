@@ -16,14 +16,19 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name')->nullable();
-            $table->string('icon')->nullable();
-            $table->json('codes')->nullable();
-            $table->string('department')->nullable();
-            $table->integer('cooldown')->nullable();
-            $table->integer('cost')->nullable();
-            $table->integer('unlock_level')->nullable();
+            $table->string('category')->nullable();
+            $table->string('type')->nullable();
             $table->text('description')->nullable();
+            $table->json('code')->nullable();
+            $table->integer('damage')->nullable();
             $table->integer('armor_penetration')->nullable();
+            $table->string('uses')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->integer('fire_rate')->nullable();
+            $table->integer('cooldown')->nullable();
+            $table->decimal('call_in_time', 10, 2)->nullable();
+            $table->json('traits')->nullable();
+            $table->string('icon')->nullable();
         });
     }
 
