@@ -36,7 +36,7 @@ export const register = async (name, email, password, remember) => {
 // * LOGIN
 // *-------------------------------------* 
 // *-------------------------------------*
-export const login = (name, email, password, remember) => {
+export const login = async (name, email, password, remember) => {
     // Get unique CSRF cookie first
     axios.get('/sanctum/csrf-cookie')
         .then(() => {
@@ -56,6 +56,7 @@ export const login = (name, email, password, remember) => {
             // If login is successful, refresh the page
             if (response) {
                 console.log("Login successful!", response);
+                getAuthUser(); 
                 //window.location.reload();
             }
         })
@@ -73,17 +74,29 @@ export const login = (name, email, password, remember) => {
 // *-------------------------------------*
 export const getAuthUser = async () => {
     try {
-        const response = await fetch('/api/user', {
-            withCredentials: true,
-        });
+        let { data } = await axios.get('/api/user');
+        user.value = data; 
 
-        if (response.ok){
-            console.log('auth response: ', response);
-            user.value = await response.json(); 
-        } else {
-            throw new Error('Failed to fetch user data');
+        console.log('user: ', user.value);
+
+    } catch (error){
+        console.log('Unable to retrieve user: ', error); 
+    }
+}
+
+// * LOGOUT USER
+// * user.value => null 
+// * refresh the page
+export const logout = async () => {
+    try {
+        const response = await axios.post(`/logout`);
+
+        if (response){
+            user.value = null;
+            console.log('Logout successful!');
+            window.location.reload();
         }
     } catch (error){
-        console.log('Unable to retrieve user: ', error);
+        console.log('Logout failed: ', error);
     }
 }

@@ -35,6 +35,7 @@ html, body{
     height: 100%;
 }
 button{
+    font-family: var(--font-family-kode-mono);
     cursor: pointer;
 }
 input{

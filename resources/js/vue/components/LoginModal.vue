@@ -19,7 +19,8 @@
                     <label for="remember">Remember Me</label>
                     <input type="checkbox" id="remember" name="remember" v-model="remember">
 
-                    <input type="submit" value="FOR SUPER EARTH!!!">
+                    <input v-if="!showEmailForm" type="submit" value="FOR SUPER EARTH!!!">
+                    <input v-if="showEmailForm" type="submit" value="ENLIST ME FOR SUPER EARTH">
 
                     <span class="or-register">
                         <p>Not a Helldiver yet?</p><button @click="showEmailForm = !showEmailForm">Register</button>
@@ -45,7 +46,7 @@ const name = ref(null),
 const showEmailForm = ref(null);
 
 const handleLogin = async (name, email, password, remember) => {
-    if (showEmailForm){
+    if (showEmailForm.value){
         register(name, email, password, remember);
     } else {
         login(name, email, password, remember);

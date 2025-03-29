@@ -1,14 +1,15 @@
 <template>
     <nav>
         <button>Helldivers 2 Loadouts</button>
-        <p v-if="user">Herro {{ user }}</p>
+        <p v-if="user">Herro {{ user.name }}</p>
         <button @click="loginModal = !loginModal">Login</button>
+        <button @click="logout">Logout</button>
     </nav>
 </template>
 
 <script setup>
 import { loginModal, user } from '@/js/vue/composables/Global';
-import { getAuthUser } from '@/js/vue/composables/Authentication';
+import { getAuthUser, logout } from '@/js/vue/composables/Authentication';
 import { onMounted } from 'vue';
 
 onMounted(async () => {
