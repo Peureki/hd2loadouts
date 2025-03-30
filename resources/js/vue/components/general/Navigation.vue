@@ -1,9 +1,10 @@
 <template>
     <nav>
-        <button>Helldivers 2 Loadouts</button>
+        <router-link to="/">Helldivers 2 Loadouts</router-link>
+        <router-link to="/loadouts">Loadouts</router-link>
         <p v-if="user">Herro {{ user.name }}</p>
-        <button @click="loginModal = !loginModal">Login</button>
-        <button @click="logout">Logout</button>
+        <button v-if="!user" @click="loginModal = !loginModal">Login</button>
+        <button v-if="user" @click="logout">Logout</button>
     </nav>
 </template>
 

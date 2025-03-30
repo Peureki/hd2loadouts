@@ -9,16 +9,19 @@ class Weapon extends Model
 {
     protected $fillable = [
         'id',
+        'category',
         'type',
         'description',
-        'traits',
-        'stats',
-        'icon',
+        'damage',
         'armor_penetration',
+        'capacity',
+        'recoil',
+        'fire_rate',
+        'traits',
+        'icon',
     ];
 
     protected $casts = [
         'traits' => 'array', 
-        'stats' => 'array',
     ];
 }

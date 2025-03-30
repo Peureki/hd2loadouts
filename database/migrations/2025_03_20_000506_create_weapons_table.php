@@ -17,12 +17,16 @@ return new class extends Migration
 
             $table->foreign('id')->references('id')->on('armory')->onUpdate('cascade');
 
+            $table->string('category')->nullable();
             $table->string('type')->nullable();
             $table->text('description')->nullable();
+            $table->string('damage')->nullable();
+            $table->string('armor_penetration')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->integer('recoil')->nullable();
+            $table->integer('fire_rate')->nullable();
             $table->json('traits')->nullable();
-            $table->json('stats')->nullable();
             $table->string('icon')->nullable();
-            $table->integer('armor_penetration')->nullable();
         });
     }
 
