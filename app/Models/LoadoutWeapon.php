@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LoadoutArmory extends Model
+class LoadoutWeapon extends Model
 {
     protected $fillable = [
         'id',
         'loadout_id',
-        'armory_id',
+        'weapon_id',
     ];
 }

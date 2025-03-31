@@ -9,6 +9,7 @@ class Weapon extends Model
 {
     protected $fillable = [
         'id',
+        'name',
         'category',
         'type',
         'description',

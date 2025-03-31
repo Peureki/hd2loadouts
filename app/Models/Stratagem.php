@@ -9,16 +9,22 @@ class Stratagem extends Model
     protected $fillable = [
         'id',
         'name',
-        'codes',
-        'department',
-        'cooldown',
-        'cost',
-        'unlock_level',
+        'category',
+        'type',
         'description',
+        'code',
+        'damage',
         'armor_penetration',
+        'uses',
+        'capacity',
+        'fire_rate',
+        'cooldown',
+        'call_in_time',
+        'traits',
     ];
 
     protected $casts = [
-        'codes' => 'array',
+        'code' => 'array',
+        'traits' => 'array',
     ];
 }

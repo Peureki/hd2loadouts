@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('armors', function (Blueprint $table) {
+        Schema::create('weapons', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('armory')->onUpdate('cascade');
-
+            $table->string('name')->nullable();
+            $table->string('category')->nullable();
             $table->string('type')->nullable();
             $table->text('description')->nullable();
-            $table->json('passives')->nullable();
-            $table->json('stats')->nullable();
+            $table->string('damage')->nullable();
+            $table->string('armor_penetration')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->integer('recoil')->nullable();
+            $table->integer('fire_rate')->nullable();
+            $table->json('traits')->nullable();
             $table->string('icon')->nullable();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('armors');
+        Schema::dropIfExists('weapons');
     }
 };

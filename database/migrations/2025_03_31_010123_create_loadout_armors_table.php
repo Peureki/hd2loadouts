@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loadout_armory', function (Blueprint $table) {
+        Schema::create('loadout_armors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
             $table->unsignedBigInteger('loadout_id')->nullable();
-            $table->unsignedBigInteger('armory_id')->nullable();
+            $table->unsignedBigInteger('armor_id')->nullable();
 
             $table->foreign('loadout_id')->references('id')->on('loadouts')->onUpdate('cascade');
-            $table->foreign('armory_id')->references('id')->on('armory')->onUpdate('cascade');
+            $table->foreign('armor_id')->references('id')->on('armors')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loadout_armory');
+        Schema::dropIfExists('loadout_armors');
     }
 };
